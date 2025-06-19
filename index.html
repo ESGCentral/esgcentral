@@ -11,15 +11,36 @@
       scroll-behavior: smooth;
     }
 
-    body {
+    body, html {
       margin: 0;
-      background-color: #000;
-      color: #fff;
+      padding: 0;
+      height: 100%;
       font-family: 'Inter', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      background: #000;
+    }
+
+    /* Starfield background animation */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://i.ibb.co/9nt8mN7/stars-bg.gif') repeat;
+      background-size: cover;
+      z-index: -2;
+      opacity: 0.25;
+      animation: moveStars 60s linear infinite;
+    }
+
+    @keyframes moveStars {
+      0% { background-position: 0 0; }
+      100% { background-position: -1000px 1000px; }
     }
 
     nav {
-      background-color: #000;
+      background-color: rgba(0, 0, 0, 0.8);
       padding: 20px 40px;
       display: flex;
       justify-content: space-between;
@@ -50,26 +71,16 @@
     }
 
     .hero {
-      text-align: center;
-      padding: 140px 20px;
-      background: url('https://images.unsplash.com/photo-1476611338391-6f395a0ebc64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
       position: relative;
-      color: #fff;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.75);
-      z-index: 1;
+      text-align: center;
+      padding: 100px 20px 150px;
+      z-index: 2;
     }
 
     .hero-content {
-      position: relative;
-      z-index: 2;
       animation: fadeIn 2s ease;
+      z-index: 2;
+      position: relative;
     }
 
     .hero h1 {
@@ -78,7 +89,7 @@
       background: linear-gradient(to right, #d2b47f, #fff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .hero p {
@@ -86,6 +97,19 @@
       color: #d2b47f;
       max-width: 700px;
       margin: 0 auto;
+    }
+
+    .earth {
+      width: 180px;
+      height: 180px;
+      background: url('https://i.ibb.co/NsLQ2Yv/earth.png') no-repeat center/contain;
+      margin: 40px auto 0;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
 
     .buttons {
@@ -117,6 +141,7 @@
       color: #777;
       border-top: 1px solid #444;
       font-size: 0.9em;
+      background: rgba(0, 0, 0, 0.7);
     }
 
     @keyframes fadeIn {
@@ -142,6 +167,11 @@
       nav a {
         margin: 10px 0 0 0;
       }
+
+      .earth {
+        width: 120px;
+        height: 120px;
+      }
     }
   </style>
 </head>
@@ -161,6 +191,7 @@
     <div class="hero-content">
       <h1>ESGCENTRAL.AI</h1>
       <p>Your Daily Dose of ESG & Sustainability Intelligence. Curated News, Jobs & Reports — All in One Place.</p>
+      <div class="earth"></div>
       <div class="buttons">
         <a href="news.html">📰 ESG News</a>
         <a href="jobs.html">💼 ESG Jobs</a>
