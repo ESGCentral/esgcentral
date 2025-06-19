@@ -4,64 +4,85 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ESGCentral.ai</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       background-color: #000;
       color: #f5f5f5;
     }
 
     nav {
       background-color: #000;
-      padding: 20px;
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #444;
+      border-bottom: 1px solid #333;
     }
 
     nav a {
       color: #f5f5f5;
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: 600;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
     nav a:hover {
       color: #c2aa7d;
     }
 
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5em;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
     .hero {
       text-align: center;
       padding: 120px 20px;
+      background: linear-gradient(to bottom, #000, #111);
+      animation: fadeIn 2s ease-in-out;
     }
 
     .hero h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
+      font-size: 3.5em;
       color: #fff;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 10px;
     }
 
     .hero p {
       font-size: 1.2em;
       color: #c2aa7d;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
     .buttons {
-      margin-top: 40px;
+      margin-top: 50px;
     }
 
     .buttons a {
       background-color: #c2aa7d;
       color: #000;
-      padding: 12px 30px;
+      padding: 14px 32px;
       text-decoration: none;
       margin: 10px;
       font-weight: bold;
-      border-radius: 6px;
-      transition: background 0.3s ease;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border: none;
+      font-size: 1em;
     }
 
     .buttons a:hover {
@@ -70,16 +91,41 @@
 
     footer {
       text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
       color: #777;
       border-top: 1px solid #444;
       font-size: 0.9em;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2em;
+      }
+
+      .buttons a {
+        display: block;
+        margin: 15px auto;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin: 10px 0 0 0;
+      }
     }
   </style>
 </head>
 <body>
   <nav>
-    <div><strong>ESGCENTRAL.AI</strong></div>
+    <div class="logo">ESGCENTRAL.AI</div>
     <div>
       <a href="news.html">News</a>
       <a href="jobs.html">Jobs</a>
@@ -91,7 +137,7 @@
 
   <section class="hero">
     <h1>ESGCENTRAL.AI</h1>
-    <p>Your Daily Dose of ESG & Sustainability Intelligence</p>
+    <p>Your Daily Dose of ESG & Sustainability Intelligence. Curated News, Jobs & Reports — All in One Place.</p>
     <div class="buttons">
       <a href="news.html">📰 ESG News</a>
       <a href="jobs.html">💼 ESG Jobs</a>
@@ -100,8 +146,7 @@
   </section>
 
   <footer>
-    © ESGCentral.ai | Built for a Greener Future
+    © ESGCentral.ai | Built for a Greener Future | Powered by George 🌿
   </footer>
 </body>
 </html>
-
