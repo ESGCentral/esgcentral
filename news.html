@@ -5,13 +5,12 @@
   <title>Latest ESG News – ESGCentral.ai</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/rss-parser/3.12.0/rss-parser.min.js"></script>
 </head>
 <body class="bg-black text-white font-sans p-6">
 
   <header class="mb-10">
     <h1 class="text-4xl font-bold text-green-400">📰 Latest ESG News</h1>
-    <p class="text-lg text-gray-300 mt-2">Live sustainability updates, auto-pulled from top news sources</p>
+    <p class="text-lg text-gray-300 mt-2">Live sustainability updates, pulled from Google News</p>
   </header>
 
   <section id="news" class="space-y-6"></section>
@@ -21,15 +20,14 @@
   </footer>
 
   <script>
-    const feedURL = 'https://news.google.com/rss/search?q=ESG+Sustainability+India&hl=en-IN&gl=IN&ceid=IN:en';
+    const feedURL = encodeURIComponent('https://news.google.com/rss/search?q=ESG+Sustainability+India&hl=en-IN&gl=IN&ceid=IN:en');
+    const apiURL = `https://api.rss2json.com/v1/api.json?rss_url=${feedURL}`;
 
-    const parser = new RSSParser();
-    const newsContainer = document.getElementById('news');
-
-    async function loadNews() {
-      try {
-        const feed = await parser.parseURL(feedURL);
-        feed.items.slice(0, 6).forEach(item => {
+    fetch(apiURL)
+      .then(response => response.json())
+      .then(data => {
+        const newsContainer = document.getElementById('news');
+        data.items.slice(0, 6).forEach(item => {
           const newsItem = document.createElement('div');
           newsItem.className = 'bg-gray-900 p-5 rounded-lg shadow-lg';
           newsItem.innerHTML = `
@@ -39,12 +37,10 @@
           `;
           newsContainer.appendChild(newsItem);
         });
-      } catch (err) {
-        newsContainer.innerHTML = '<p class="text-red-500">Failed to load news. Please try again later.</p>';
-      }
-    }
-
-    loadNews();
+      })
+      .catch(error => {
+        document.getElementById('news').innerHTML = '<p class="text-red-500">Failed to load news. Please try again later.</p>';
+      });
   </script>
 
 </body>
