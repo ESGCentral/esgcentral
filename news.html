@@ -2,221 +2,215 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ESGCentral - India's Green Jobs & Sustainability News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ESGCentral | India's Green Jobs & Sustainability News</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      font-family: 'Georgia', serif;
       background: #fff;
       color: #222;
     }
-    header {
-      background: #ffffff;
+
+    /* NAVBAR */
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #ccc;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #ddd;
       position: sticky;
       top: 0;
-      z-index: 999;
+      z-index: 1000;
     }
-    header h1 {
+
+    .navbar h1 {
       font-size: 1.8rem;
-      color: #144c27;
-      font-weight: 700;
+      color: #0a4d22;
+      margin: 0;
     }
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
-    nav a {
-      color: #333;
+
+    .navbar nav a {
+      margin: 0 1rem;
+      color: #444;
       text-decoration: none;
-      font-size: 0.95rem;
-      padding: 0.4rem 0.6rem;
-      border-radius: 4px;
-      transition: background 0.2s;
+      font-weight: 500;
     }
-    nav a:hover {
-      background: #f0f0f0;
+
+    .navbar nav a:hover {
+      color: #00703c;
     }
-    .main-content {
-      display: flex;
+
+    .main {
       padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* NEWS SECTION */
+    .section-heading {
+      font-size: 1.5rem;
+      border-left: 5px solid #e63946;
+      padding-left: 0.8rem;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
-    .main-article {
-      flex: 2;
-    }
-    .main-article .news-block {
+
+    .news-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
     }
-    .news-card {
-      display: flex;
-      border-bottom: 1px solid #e0e0e0;
-      padding-bottom: 1.2rem;
-      gap: 1.5rem;
+
+    .news-card:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
     }
+
     .news-card img {
-      width: 200px;
-      height: 130px;
+      width: 100%;
+      height: 180px;
       object-fit: cover;
-      border-radius: 8px;
     }
+
     .news-card-content {
+      padding: 1rem;
       flex: 1;
     }
+
     .news-card-content h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-    .news-card-content h3 a {
+      margin: 0;
+      font-size: 1.1rem;
       color: #00703c;
-      text-decoration: none;
     }
-    .news-card-content h3 a:hover {
-      text-decoration: underline;
-    }
+
     .news-card-content p {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      margin: 0.5rem 0 0;
       color: #444;
     }
-    .news-date {
+
+    .news-card-content .date {
       font-size: 0.8rem;
-      color: #888;
-      margin-top: 0.2rem;
+      color: #999;
     }
-    .sidebar {
-      flex: 1;
-    }
-    .sidebar h4 {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #00703c;
-      padding-bottom: 0.5rem;
-      color: #00703c;
-    }
-    .sidebar ul {
-      list-style: none;
-    }
-    .sidebar ul li {
-      margin-bottom: 0.75rem;
-    }
-    .sidebar ul li a {
-      color: #00703c;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
-    .sidebar ul li a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      background: #f8f8f8;
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-      border-top: 1px solid #ddd;
-      margin-top: 3rem;
-    }
-    @media (max-width: 768px) {
-      .main-content {
+
+    @media (max-width: 600px) {
+      .navbar {
         flex-direction: column;
+        align-items: flex-start;
       }
-      .news-card {
-        flex-direction: column;
-      }
-      .news-card img {
-        width: 100%;
-        height: auto;
+
+      .navbar nav {
+        margin-top: 0.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
     <h1>ESGCentral</h1>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">ESG News</a>
-      <a href="#">Jobs</a>
-      <a href="#">CSR</a>
+      <a href="#">ESG Jobs</a>
+      <a href="#">CSR News</a>
       <a href="#">Policy</a>
-      <a href="#">Climate</a>
-      <a href="#">Subscribe</a>
+      <a href="#">India</a>
+      <a href="#">Global</a>
     </nav>
-  </header>
+  </div>
 
-  <section class="main-content">
-    <div class="main-article">
-      <div class="news-block" id="news-list">
-        <!-- JavaScript will load news cards here -->
-      </div>
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <h2 class="section-heading">🔍 Latest ESG & CSR Job News in India</h2>
+
+    <div class="news-grid" id="news-container">
+      <!-- News cards will be injected here -->
     </div>
-    <aside class="sidebar">
-      <h4>Popular Tags</h4>
-      <ul>
-        <li><a href="#">#ESGIndia</a></li>
-        <li><a href="#">#SustainabilityJobs</a></li>
-        <li><a href="#">#ClimateAction</a></li>
-        <li><a href="#">#CSRFunding</a></li>
-        <li><a href="#">#GreenCareers</a></li>
-      </ul>
-    </aside>
-  </section>
-
-  <footer>
-    &copy; 2025 ESGCentral.ai | Built for a Sustainable Future 🌍
-  </footer>
+  </main>
 
   <script>
-    const newsData = [
+    const news = [
       {
-        title: "NEERI launches Sustainovate 2025 AI‑Environmental Challenge",
-        link: "#",
+        title: "NEERI Launches 'Sustainovate' 2025 AI‑Environmental Challenge",
+        description: "NEERI invites applications to develop AI-powered environmental solutions under SDG funding lines.",
         date: "June 18, 2025",
-        description: "NEERI invites innovators to build AI-powered environmental solutions with mentorship & funding.",
-        image: "https://source.unsplash.com/featured/?environment"
+        link: "#",
+        image: "https://source.unsplash.com/featured/?nature,ai"
       },
       {
-        title: "SEBI releases ESG‑debt bond framework",
-        link: "#",
-        date: "June 5, 2025",
-        description: "New rules ensure ESG‑linked debt instruments are more transparent and impact-driven.",
-        image: "https://source.unsplash.com/featured/?finance"
-      },
-      {
-        title: "Infosys hiring for 200+ ESG and sustainability roles",
-        link: "#",
+        title: "Infosys Expands ESG Hiring Across India",
+        description: "Over 200 roles in climate risk, reporting, carbon accounting, and sustainability auditing.",
         date: "June 15, 2025",
-        description: "Roles include ESG analyst, sustainability consultant and climate tech specialist.",
-        image: "https://source.unsplash.com/featured/?technology"
+        link: "#",
+        image: "https://source.unsplash.com/featured/?office,india"
+      },
+      {
+        title: "L&T Announces Second ESG Bond After ₹5,000 Cr Green Issue",
+        description: "The infrastructure major receives green light from regulators for another ESG-linked bond.",
+        date: "June 14, 2025",
+        link: "#",
+        image: "https://source.unsplash.com/featured/?infrastructure"
+      },
+      {
+        title: "Maharashtra PWD to Build 400 Highway Rest Hubs via CSR",
+        description: "PPP project funded by CSR from major FMCG & auto brands, part of rural upliftment mission.",
+        date: "June 10, 2025",
+        link: "#",
+        image: "https://source.unsplash.com/featured/?construction,india"
+      },
+      {
+        title: "UNDP India Hiring ESG Policy Specialist",
+        description: "Openings in Delhi and Bangalore for sustainability strategy and stakeholder engagement roles.",
+        date: "June 9, 2025",
+        link: "#",
+        image: "https://source.unsplash.com/featured/?un,india"
+      },
+      {
+        title: "TCS Launches GreenTech Internship Program 2025",
+        description: "Open to final-year students in sustainability, environment, energy & governance programs.",
+        date: "June 8, 2025",
+        link: "#",
+        image: "https://source.unsplash.com/featured/?students,green"
+      },
+      {
+        title: "Ahmedabad Urban Dev Authority to Plant 1.2L Trees via CSR",
+        description: "11 parks to receive dense Miyawaki forests supported by CSR from IT and pharma firms.",
+        date: "June 7, 2025",
+        link: "#",
+        image: "https://source.unsplash.com/featured/?urban,green"
       }
-      // Add more objects here up to 50...
+      // Add more items as needed
     ];
 
-    const container = document.getElementById('news-list');
-    newsData.forEach(news => {
+    const container = document.getElementById('news-container');
+
+    news.forEach(item => {
       const card = document.createElement('div');
       card.className = 'news-card';
       card.innerHTML = `
-        <img src="${news.image}" alt="${news.title}">
+        <img src="${item.image}" alt="${item.title}">
         <div class="news-card-content">
-          <h3><a href="${news.link}" target="_blank">${news.title}</a></h3>
-          <div class="news-date">${news.date}</div>
-          <p>${news.description}</p>
+          <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
+          <div class="date">${item.date}</div>
+          <p>${item.description}</p>
         </div>
       `;
       container.appendChild(card);
     });
   </script>
+
 </body>
 </html>
