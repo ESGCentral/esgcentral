@@ -5,15 +5,29 @@
   <title>Latest ESG News – ESGCentral.ai</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+    .news-card {
+      border: 1px solid #333;
+    }
+    .news-image {
+      object-fit: cover;
+      width: 100%;
+      height: 180px;
+    }
+  </style>
 </head>
-<body class="bg-black text-white font-sans p-6">
+<body class="font-sans p-6">
 
   <header class="mb-10">
-    <h1 class="text-4xl font-bold text-green-400">📰 Latest ESG News</h1>
-    <p class="text-lg text-gray-300 mt-2">Live sustainability updates, pulled from Google News</p>
+    <h1 class="text-4xl font-bold text-white">📰 Latest ESG News</h1>
+    <p class="text-lg text-gray-400 mt-2">Live updates on sustainability, climate, ESG & policy — auto-curated from Google News</p>
   </header>
 
-  <section id="news" class="space-y-6"></section>
+  <section id="news" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></section>
 
   <footer class="mt-16 text-gray-500 text-sm">
     🔄 Updated in real time — Powered by ESGCentral.ai
@@ -29,11 +43,17 @@
         const newsContainer = document.getElementById('news');
         data.items.slice(0, 6).forEach(item => {
           const newsItem = document.createElement('div');
-          newsItem.className = 'bg-gray-900 p-5 rounded-lg shadow-lg';
+          newsItem.className = 'news-card bg-gray-950 p-4 rounded-xl shadow-md';
+
+          const imageUrl = item.thumbnail || "https://source.unsplash.com/400x200/?earth,sustainability,climate";
+
           newsItem.innerHTML = `
-            <h2 class="text-xl font-semibold">${item.title}</h2>
-            <p class="text-sm text-gray-400">${new Date(item.pubDate).toLocaleDateString()}</p>
-            <a href="${item.link}" target="_blank" class="text-green-400 underline inline-block mt-2">Read Full Story →</a>
+            <img src="${imageUrl}" alt="News Image" class="news-image rounded-t-md">
+            <div class="p-2">
+              <h2 class="text-lg font-bold text-white">${item.title}</h2>
+              <p class="text-sm text-gray-400 mt-1">${new Date(item.pubDate).toLocaleDateString()}</p>
+              <a href="${item.link}" target="_blank" class="text-white underline mt-2 inline-block">Read Full Story →</a>
+            </div>
           `;
           newsContainer.appendChild(newsItem);
         });
