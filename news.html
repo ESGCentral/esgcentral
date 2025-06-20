@@ -1,59 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ESG News | ESGCentral.ai</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      background-color: #000;
-      color: #f5f5f5;
-      font-family: 'Playfair Display', serif;
+  <meta charset="UTF-8" />
+  <title>Latest ESG News – ESGCentral.ai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rss-parser/3.12.0/rss-parser.min.js"></script>
+</head>
+<body class="bg-black text-white font-sans p-6">
+
+  <header class="mb-10">
+    <h1 class="text-4xl font-bold text-green-400">📰 Latest ESG News</h1>
+    <p class="text-lg text-gray-300 mt-2">Live sustainability updates, auto-pulled from top news sources</p>
+  </header>
+
+  <section id="news" class="space-y-6"></section>
+
+  <footer class="mt-16 text-gray-500 text-sm">
+    🔄 Updated in real time — Powered by ESGCentral.ai
+  </footer>
+
+  <script>
+    const feedURL = 'https://news.google.com/rss/search?q=ESG+Sustainability+India&hl=en-IN&gl=IN&ceid=IN:en';
+
+    const parser = new RSSParser();
+    const newsContainer = document.getElementById('news');
+
+    async function loadNews() {
+      try {
+        const feed = await parser.parseURL(feedURL);
+        feed.items.slice(0, 6).forEach(item => {
+          const newsItem = document.createElement('div');
+          newsItem.className = 'bg-gray-900 p-5 rounded-lg shadow-lg';
+          newsItem.innerHTML = `
+            <h2 class="text-xl font-semibold">${item.title}</h2>
+            <p class="text-sm text-gray-400">${new Date(item.pubDate).toLocaleDateString()}</p>
+            <a href="${item.link}" target="_blank" class="text-green-400 underline inline-block mt-2">Read Full Story →</a>
+          `;
+          newsContainer.appendChild(newsItem);
+        });
+      } catch (err) {
+        newsContainer.innerHTML = '<p class="text-red-500">Failed to load news. Please try again later.</p>';
+      }
     }
 
-    nav {
-      background-color: #000;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #444;
-    }
+    loadNews();
+  </script>
 
-    nav a {
-      color: #f5f5f5;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      color: #c2aa7d;
-    }
-
-    h1 {
-      text-align: center;
-      margin-top: 50px;
-      color: #c2aa7d;
-    }
-
-    .news-card {
-      background-color: #111;
-      border: 1px solid #333;
-      margin: 20px auto;
-      padding: 20px;
-      width: 80%;
-      border-radius: 10px;
-    }
-
-    .news-card a {
-      color: #c2aa7d;
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: #777;
-      border-top: 1px solid #444;
+</body>
+</html>
