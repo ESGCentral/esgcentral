@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Latest ESG News – ESGCentral.ai</title>
+  <title>Latest Sustainability Jobs – ESGCentral.ai</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
@@ -22,8 +22,8 @@
 <body class="font-sans p-6">
 
   <header class="mb-10">
-    <h1 class="text-4xl font-bold text-white">📰 Latest ESG News</h1>
-    <p class="text-lg text-gray-400 mt-2">Live updates on sustainability, climate, ESG & policy — auto-curated from Google News</p>
+    <h1 class="text-4xl font-bold text-white">📢 Latest Sustainability Jobs in India</h1>
+    <p class="text-lg text-gray-400 mt-2">Handpicked ESG, CSR & Climate Job Updates from Indian Private & Government Companies</p>
   </header>
 
   <!-- Top Banner Ad -->
@@ -40,13 +40,13 @@
   </div>
 
   <div class="flex flex-col lg:flex-row gap-6">
-    <!-- News Section -->
+    <!-- Jobs Section -->
     <section id="news" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 flex-1"></section>
 
     <!-- Sidebar Ad -->
     <aside class="w-full lg:w-1/4">
       <div class="bg-gray-900 p-4 rounded-lg shadow-lg text-center">
-        <h3 class="text-white text-xl font-bold mb-2">🔗 Sponsored</h3>
+        <h3 class="text-white text-xl font-bold mb-2">💼 Sponsored</h3>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-XXXXXXXXXXXXXXX"
@@ -74,11 +74,11 @@
   </div>
 
   <footer class="mt-16 text-gray-500 text-sm">
-    🔄 Updated in real time — Powered by ESGCentral.ai
+    Updated daily — Powered by ESGCentral.ai Job Tracker
   </footer>
 
   <script>
-    const feedURL = encodeURIComponent('https://news.google.com/rss/search?q=ESG+Sustainability+India&hl=en-IN&gl=IN&ceid=IN:en');
+    const feedURL = encodeURIComponent('https://news.google.com/rss/search?q=Sustainability+Jobs+India+OR+ESG+OR+CSR+jobs+India&hl=en-IN&gl=IN&ceid=IN:en');
     const apiURL = `https://api.rss2json.com/v1/api.json?rss_url=${feedURL}`;
 
     fetch(apiURL)
@@ -109,18 +109,18 @@
           const newsItem = document.createElement('div');
           newsItem.className = 'bg-gray-950 p-4 rounded-xl shadow-md border border-gray-800';
           newsItem.innerHTML = `
-            <img src="${imageUrl}" alt="News Image" class="news-image rounded-t-md">
+            <img src="${imageUrl}" alt="Job Image" class="news-image rounded-t-md">
             <div class="p-2">
               <h2 class="text-lg font-bold text-white">${item.title}</h2>
               <p class="text-sm text-gray-400 mt-1">${new Date(item.pubDate).toLocaleDateString()}</p>
-              <a href="${item.link}" target="_blank" class="text-white underline mt-2 inline-block">Read Full Story →</a>
+              <a href="${item.link}" target="_blank" class="text-white underline mt-2 inline-block">View Job →</a>
             </div>
           `;
           newsContainer.appendChild(newsItem);
         });
       })
       .catch(error => {
-        document.getElementById('news').innerHTML = '<p class="text-red-500">Failed to load news. Please try again later.</p>';
+        document.getElementById('news').innerHTML = '<p class="text-red-500">Failed to load job posts. Please try again later.</p>';
       });
   </script>
 
