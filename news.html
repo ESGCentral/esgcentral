@@ -59,8 +59,13 @@
           "https://source.unsplash.com/400x200/?nature",
           "https://source.unsplash.com/400x200/?clean-energy"
         ];
+
         data.items.slice(0, 12).forEach((item, index) => {
-          const imageUrl = item.thumbnail && item.thumbnail.startsWith('http') ? item.thumbnail : defaultImages[index % defaultImages.length];
+          const imageUrl =
+            (item.enclosure && item.enclosure.link && item.enclosure.link.startsWith('http'))
+              ? item.enclosure.link
+              : defaultImages[index % defaultImages.length];
+
           const newsItem = document.createElement('div');
           newsItem.className = 'bg-gray-950 p-4 rounded-xl shadow-md border border-gray-800';
           newsItem.innerHTML = `
