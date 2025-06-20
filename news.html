@@ -1,53 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>ESGCentral: India ESG Job & News</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ESGCentral | India's Green Jobs & CSR Newsroom</title>
   <style>
-    body { background:#0a0a0a; color:#ececec; font-family:Georgia, serif; margin:0; padding:0; }
-    header { padding:2rem; text-align:center; background:#111; border-bottom:1px solid #333; }
-    header h1 { color:#eef; font-size:2.5rem; margin:0; }
-    header p { color:#bbb; margin-top:.5rem; }
-    .container { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:1.5rem; padding:2rem; }
-    .card { background:#161616; border:1px solid #2b2b2b; border-radius:12px; padding:1.2rem; transition:transform .2s; }
-    .card:hover { transform:scale(1.02); background:#1e1e1e; }
-    .card h3 a { color:#7fcfff; text-decoration:none; }
-    .card h3 a:hover { text-decoration:underline; }
-    .card .date { color:#aaa; font-size:.9rem; }
-    .card p { margin:.8rem 0 0; line-height:1.4; }
+    body {
+      background-color: #ffffff;
+      font-family: 'Georgia', serif;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #f4f4f4;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      color: #144c27;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-content h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #00703c;
+    }
+
+    .card-content h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .card-content .date {
+      font-size: 0.85rem;
+      color: #777;
+      margin: 0.4rem 0;
+    }
+
+    .card-content p {
+      margin: 0.4rem 0 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>🇮🇳 India ESG + Sustainability Job News</h1>
-    <p>Stay on top of hiring trends in sustainability, CSR & ESG roles across India</p>
+    <h1>🌱 ESGCentral - India's Premier Green Jobs & CSR Newsroom</h1>
+    <p>Fresh updates on ESG roles, CSR news & sustainability hiring</p>
   </header>
+
   <section class="container" id="news-list"></section>
 
   <script>
     const news = [
-      { title: "NEERI launches Sustainovate 2025 AI‑Environmental Challenge", link: "#", date:"June 18, 2025", description:"NEERI invites innovators to build AI‑powered, nature‑based environmental solutions; open to students, entrepreneurs with mentorship & funding." },
-      { title: "SEBI rolls out ESG‑Debt Framework for social/sustainability bonds", link: "#", date:"June 5, 2025", description:"India’s market regulator introduces guidelines for ESG‑linked debt instruments to ensure genuine use of proceeds." },
-      { title: "PWD Maharashtra seeks CSR support to build 400 highway rest‑hubs", link: "#", date:"June 2025", description:"Maharashtra PWD plans 400 toilet + eatery hubs funded by CSR under PPP methodology." },
-      { title: "L&T considers second ESG bond issuance after strong debut", link: "#", date:"June 19, 2025", description:"Infrastructure major saw strong demand in its first ESG bond and is exploring another issuance." },
-      { title: "Foxhog Ventures commits ₹25cr CSR to IIT‑Kanpur startups", link: "#", date:"June 11, 2025", description:"US VC firm Foxhog funds aerospace/agritech/incubation startups at IIT‑Kanpur via CSR initiative." },
-      { title: "Oberoi Group pledges full wastewater recycling & renewables by 2030", link: "#", date:"June 2025", description:"Hospitality chain unveils ‘Elements by Oberoi’: targets 100% water recycling, 50% renewables & EV fleet." },
-      { title: "Ahmedabad UDA to plant 1.2 lakh trees via CSR Miyawaki forests", link: "#", date:"June 18, 2025", description:"AUDA rolls out dense afforestation across 11 parks using CSR‑funds and NGOs under Miyawaki protocol." },
-      { title: "India firms lean into ESG for strategic growth", link: "#", date:"May 2025", description:"Economic Times: businesses integrate ESG into core strategies to drive innovation, risk management & funding." },
-      { title: "Recruiters post 4,000+ ESG roles on Naukri.com (June 2025)", link: "#", date:"June 2025", description:"Job portal shows over 4 k openings spanning ESG Analyst, Sustainability Officer, CSR Manager across India." },
-      { title: "Glassdoor: 337 sustainability job listings in India", link: "#", date:"June 2025", description:"Glassdoor reports 337 active roles in ESG, sustainability leadership and operations across Indian cities." },
-      // ADD 40 more entries here ...
+      {
+        title: "NEERI launches Sustainovate 2025 AI‑Environmental Challenge",
+        link: "#",
+        date: "June 18, 2025",
+        description: "NEERI invites innovators to build AI-powered environmental solutions. Open to students, entrepreneurs.",
+        image: "https://source.unsplash.com/featured/?environment"
+      },
+      {
+        title: "SEBI releases ESG‑debt bond framework",
+        link: "#",
+        date: "June 5, 2025",
+        description: "New rules ensure ESG‑linked debt instruments are more transparent and impact-driven.",
+        image: "https://source.unsplash.com/featured/?finance"
+      },
+      {
+        title: "L&T to issue second ESG bond after strong debut",
+        link: "#",
+        date: "June 19, 2025",
+        description: "India’s infra giant prepares its second green bond amid investor confidence.",
+        image: "https://source.unsplash.com/featured/?infrastructure"
+      },
+      {
+        title: "Ahmedabad UDA begins CSR tree planting drive",
+        link: "#",
+        date: "June 18, 2025",
+        description: "Over 1.2 lakh trees to be planted using CSR funds with Miyawaki forest technique.",
+        image: "https://source.unsplash.com/featured/?forest"
+      },
+      {
+        title: "Oberoi Group commits to full wastewater recycling by 2030",
+        link: "#",
+        date: "June 2025",
+        description: "The hotel chain targets 50% renewable energy usage and complete water recycling.",
+        image: "https://source.unsplash.com/featured/?hotel"
+      },
+      {
+        title: "PWD Maharashtra seeks CSR funding for 400 rest-hubs",
+        link: "#",
+        date: "June 2025",
+        description: "Maharashtra’s PWD invites corporates to partner via CSR for public rest facilities.",
+        image: "https://source.unsplash.com/featured/?construction"
+      },
+      {
+        title: "Infosys hiring for 200+ ESG and sustainability roles",
+        link: "#",
+        date: "June 2025",
+        description: "Roles include ESG analyst, sustainability consultant and climate tech specialist.",
+        image: "https://source.unsplash.com/featured/?corporate"
+      },
+      {
+        title: "CSR jobs spike by 28% on Naukri.com this quarter",
+        link: "#",
+        date: "June 2025",
+        description: "Naukri reports a rise in CSR job listings across major metros and Tier 2 cities.",
+        image: "https://source.unsplash.com/featured/?job"
+      },
+      {
+        title: "Foxhog Ventures pledges ₹25cr to IIT-Kanpur CSR startups",
+        link: "#",
+        date: "June 11, 2025",
+        description: "Investment targets agritech, aerospace, and AI-based sustainability projects.",
+        image: "https://source.unsplash.com/featured/?startup"
+      },
+      {
+        title: "India Inc adopts ESG as core strategy for growth",
+        link: "#",
+        date: "May 2025",
+        description: "Top corporates are integrating ESG into business planning, risk and compliance.",
+        image: "https://source.unsplash.com/featured/?strategy"
+      }
+      // Add more items up to 50
     ];
 
-    const container=document.getElementById("news-list");
-    news.forEach(item=>{
-      const c=document.createElement("div");
-      c.className="card";
-      c.innerHTML=`
-        <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
-        <div class="date">${item.date}</div>
-        <p>${item.description}</p>
+    const container = document.getElementById('news-list');
+    news.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.title}">
+        <div class="card-content">
+          <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
+          <div class="date">${item.date}</div>
+          <p>${item.description}</p>
+        </div>
       `;
-      container.appendChild(c);
+      container.appendChild(card);
     });
   </script>
 </body>
