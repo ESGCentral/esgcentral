@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Latest ESG News – ESGCentral.ai</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
@@ -52,19 +52,25 @@
       .then(data => {
         const newsContainer = document.getElementById('news');
         const defaultImages = [
-          "https://source.unsplash.com/400x200/?sustainability",
-          "https://source.unsplash.com/400x200/?climate",
-          "https://source.unsplash.com/400x200/?environment",
-          "https://source.unsplash.com/400x200/?earth",
-          "https://source.unsplash.com/400x200/?nature",
-          "https://source.unsplash.com/400x200/?clean-energy"
+          "https://images.unsplash.com/photo-1526403228816-47f2e2a46eb4",
+          "https://images.unsplash.com/photo-1581091870633-eef8f0c6b7c0",
+          "https://images.unsplash.com/photo-1509395062183-67c5ad6faff9",
+          "https://images.unsplash.com/photo-1542831371-d531d36971e6",
+          "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92",
+          "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1"
         ];
 
         data.items.slice(0, 12).forEach((item, index) => {
-          const imageUrl =
-            (item.enclosure && item.enclosure.link && item.enclosure.link.startsWith('http'))
-              ? item.enclosure.link
-              : defaultImages[index % defaultImages.length];
+          let imageUrl = defaultImages[index % defaultImages.length];
+
+          if (item.enclosure && item.enclosure.link && item.enclosure.link.startsWith('http')) {
+            imageUrl = item.enclosure.link;
+          } else if (item.content && item.content.includes('img')) {
+            const match = item.content.match(/<img[^>]+src=\"([^\"]+)\"/);
+            if (match && match[1].startsWith('http')) {
+              imageUrl = match[1];
+            }
+          }
 
           const newsItem = document.createElement('div');
           newsItem.className = 'bg-gray-950 p-4 rounded-xl shadow-md border border-gray-800';
