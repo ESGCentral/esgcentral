@@ -10,9 +10,6 @@
       background-color: #000;
       color: #fff;
     }
-    .news-card {
-      border: 1px solid #333;
-    }
     .news-image {
       object-fit: cover;
       width: 100%;
@@ -27,7 +24,20 @@
     <p class="text-lg text-gray-400 mt-2">Live updates on sustainability, climate, ESG & policy — auto-curated from Google News</p>
   </header>
 
-  <section id="news" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></section>
+  <div class="flex flex-col lg:flex-row gap-6">
+    <!-- News Section -->
+    <section id="news" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 flex-1"></section>
+
+    <!-- Ad Space -->
+    <aside class="w-full lg:w-1/4">
+      <div class="bg-gray-900 p-4 rounded-lg shadow-lg text-center">
+        <h3 class="text-white text-xl font-bold mb-2">🔗 Sponsored</h3>
+        <p class="text-gray-400 text-sm mb-4">Ad slot available</p>
+        <!-- Replace below with your ad code or affiliate banner -->
+        <div class="bg-white text-black py-10 rounded-md">AdSense / Banner Placeholder</div>
+      </div>
+    </aside>
+  </div>
 
   <footer class="mt-16 text-gray-500 text-sm">
     🔄 Updated in real time — Powered by ESGCentral.ai
@@ -41,12 +51,18 @@
       .then(response => response.json())
       .then(data => {
         const newsContainer = document.getElementById('news');
-        data.items.slice(0, 6).forEach(item => {
+        const defaultImages = [
+          "https://source.unsplash.com/400x200/?sustainability",
+          "https://source.unsplash.com/400x200/?climate",
+          "https://source.unsplash.com/400x200/?environment",
+          "https://source.unsplash.com/400x200/?earth",
+          "https://source.unsplash.com/400x200/?nature",
+          "https://source.unsplash.com/400x200/?clean-energy"
+        ];
+        data.items.slice(0, 12).forEach((item, index) => {
+          const imageUrl = item.thumbnail && item.thumbnail.startsWith('http') ? item.thumbnail : defaultImages[index % defaultImages.length];
           const newsItem = document.createElement('div');
-          newsItem.className = 'news-card bg-gray-950 p-4 rounded-xl shadow-md';
-
-          const imageUrl = item.thumbnail || "https://source.unsplash.com/400x200/?earth,sustainability,climate";
-
+          newsItem.className = 'bg-gray-950 p-4 rounded-xl shadow-md border border-gray-800';
           newsItem.innerHTML = `
             <img src="${imageUrl}" alt="News Image" class="news-image rounded-t-md">
             <div class="p-2">
